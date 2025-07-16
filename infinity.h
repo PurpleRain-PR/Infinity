@@ -7,42 +7,42 @@
 void test(void);
 
 //类型
-typedef  unsigned char _InfNumType;
+typedef const unsigned char _InfNumType;
 #define INF_INT (1)
 #define INF_FRACT (2)
 #define INF_INT_FRACT (3)
 
 //正负
-typedef  unsigned char _InfNumSign;
+typedef const unsigned char _InfNumSign;
 #define INF_POSITIVE (0)
 #define INF_NEGATIVE (1)
 
-typedef struct _InfNumInfo
+typedef struct _InfNumInfo//数字的元数据
 {
-    unsigned int sign : 1;
-    unsigned int type : 2;//高位代表整数，低位代表小数，即1:纯小数,2:纯整数,3:整数与小数
-    unsigned int intNodeAllocateCount:4;//上一次节点合并重组后新开辟数据节点的次数，用于自动合并重组，每15次时达到强制重组标准，若没有整数部分，该值为0
+    unsigned sign : 1;//符号，如宏所示
+    unsigned type : 2;//数字类型，如宏所示，高位代表整数，低位代表小数，即1:纯小数,2:纯整数,3:整数与小数
+    unsigned intNodeAllocateCount:4;//上一次节点合并重组后新开辟数据节点的次数，用于自动合并重组，每15次时达到强制重组标准，若没有整数部分，该值为0
 
 } InfNumInfo, *PInfNumInfo;
 
-typedef struct _InfinityIntegerDataNode
+typedef struct _InfinityIntegerDataNode//整数数据链表的节点
 {
-    uint64_t dataLength;
-    uint64_t* data;
+    unsigned short dataLength;
+    unsigned char* data;//指向一个数组
     struct _InfinityIntegerDataNode* nextNode;
     struct _InfinityIntegerDataNode* lastNode;
 } InfIntDataNode, *PInfIntDataNode;
 
 typedef struct _InfinityInteger
 {
-    uint64_t length;
-    uint64_t* firstDataNode;
+    unsigned char length;
+    PInfIntDataNode firstDataNode;
 } InfInt, *PInfInt;
 
 typedef struct _InfinityFract
 {
-    uint64_t length;
-    uint64_t* value;
+    unsigned char length;
+    unsigned char * value;
 } InfFract, *PInfFract;
 
 typedef struct _InfinityNumber

@@ -27,7 +27,7 @@ typedef struct _InfNumInfo//数字的元数据
 
 typedef struct _InfinityIntegerDataNode//整数数据链表的节点
 {
-    unsigned short dataLength;
+    unsigned short byteLength;
     unsigned char* data;//指向一个数组
     struct _InfinityIntegerDataNode* nextNode;
     struct _InfinityIntegerDataNode* lastNode;
@@ -35,13 +35,13 @@ typedef struct _InfinityIntegerDataNode//整数数据链表的节点
 
 typedef struct _InfinityInteger
 {
-    unsigned char length;
+    unsigned char nodeCount;
     PInfIntDataNode firstDataNode;
 } InfInt, *PInfInt;
 
 typedef struct _InfinityFract
 {
-    unsigned char length;
+    unsigned char byteLength;
     unsigned char * value;
 } InfFract, *PInfFract;
 

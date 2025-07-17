@@ -1,8 +1,10 @@
 #include <stdlib.h>
+#include <string.h>
 #include "infinity.h"
 
 //test
 #include <stdio.h>
+#include <string.h>
 
 void test(void)
 {
@@ -50,6 +52,10 @@ bool initInfNum(PInfNum num, _InfNumType type, _InfNumSign sign)
 
 bool extendIntPart(PInfNum num, unsigned short byteLength)
 {
+    if (num->intPart->nodeCount==INF_MAX_NODE_COUNT){
+        num->info.error = true;
+        return false;
+    } //节点数量达到上限
     PInfIntDataNode newNode = malloc(sizeof(InfIntDataNode));
     if (!newNode)
     {
@@ -63,6 +69,7 @@ bool extendIntPart(PInfNum num, unsigned short byteLength)
         num->info.error = true;
         return false;
     } //无法分配内存
+    memset(newNode->data, 0, byteLength);
     num->intPart->nodeCount++;
     newNode->byteLength = byteLength;
     if (num->intPart->nodeCount)

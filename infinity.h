@@ -1,5 +1,5 @@
-// #pragma once
-// #include <stdint.h>
+#pragma once
+#include <stdint.h>
 
 #ifndef INFINITY_LIBRARY_H
 #define INFINITY_LIBRARY_H
@@ -19,6 +19,7 @@ typedef const unsigned char _InfNumSign;
 
 //内存管理
 #define INF_MAX_NODE_ALLOC_COUNT (15)
+#define INF_MAX_NODE_COUNT (255)
 
 typedef struct _InfNumInfo //数字的元数据
 {

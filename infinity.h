@@ -1,5 +1,5 @@
-#pragma once
-#include <stdint.h>
+// #pragma once
+// #include <stdint.h>
 
 #ifndef INFINITY_LIBRARY_H
 #define INFINITY_LIBRARY_H
@@ -57,4 +57,4 @@ typedef struct _InfinityNumber
     PInfFract fractPart;
 } InfNum, *PInfNum;
 
-#endif INFINITY_LIBRARY_H
+#endif //INFINITY_LIBRARY_H

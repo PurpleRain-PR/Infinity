@@ -90,5 +90,17 @@ bool extendIntPart(PInfNum num, unsigned short byteLength)
     return true;
 }
 
+bool initFractPart(PInfNum num, unsigned char byteLength)
+{
+    num->fractPart->byteLength = byteLength;
+    num->fractPart->value = malloc(byteLength);
+    if (!num->fractPart->value)
+    {
+        num->info.error = true;
+        return false;
+    } //无法分配内存
+    memset(num->fractPart->value, 0, byteLength);
+    return true;
+}
 
 //test

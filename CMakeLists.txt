@@ -4,5 +4,6 @@ project(Infinity C)
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_C_FLAGS "-O3")
 
-add_library(Infinity STATIC infinity.c)
+add_library(Infinity STATIC infinity.c
+        initial.h)
 
